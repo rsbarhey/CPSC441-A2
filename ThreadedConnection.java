@@ -1,4 +1,7 @@
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.Socket;
+import java.util.Scanner;
 
 /**
  * @author Ragheb Barheyan
@@ -15,6 +18,13 @@ public class ThreadedConnection extends Thread{
 	{
 		// read the http request
 		// handle it properly
-		// return an http response   
+		// return an http response 
+		try {
+			Scanner in = new Scanner(new InputStreamReader(connectedSocket.getInputStream()));
+			System.out.println(in.nextLine());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 	}
 }
