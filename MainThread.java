@@ -15,7 +15,6 @@ public class MainThread extends Thread{
 		try {
 			serverSocket.setSoTimeout(SOCKET_TIMEOUT);
 		} catch (SocketException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
