@@ -5,13 +5,17 @@ import java.net.Socket;
 /**
  * 
  * @author Ragheb Barheyan
- * @version 0.1, Oct 22, 2015 
+ * @version 1.0, Oct 24, 2015 
  */
 public class WebServer {
 
 	private ServerSocket serverSocket;
 	private MainThread mainThread;
 	
+	/**
+	 * 
+	 * @param serverPort the port number for the ServerSocket
+	 */
 	public WebServer(int serverPort) {
 		try {
 			serverSocket = new ServerSocket(serverPort);
@@ -22,10 +26,16 @@ public class WebServer {
 		}
 	}
 
+	/**
+	 * spawns the main thread of the server
+	 */
 	public void start() {
 		mainThread.start();
 	}
 
+	/**
+	 * terminate the main thread along with sub threads
+	 */
 	public void stop() {
 		if(mainThread.isAlive())
 		{

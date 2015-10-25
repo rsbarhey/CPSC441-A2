@@ -2,21 +2,34 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author Ragheb Barheyan
+ * @version 1.0, Oct 24, 2014
+ */
 public class RequestParser {
 	private boolean validRequest = false;
 	private String GETline = "";
 	private String objectPath = "";
 	
+	/**
+	 * 
+	 * @param in the input stream containing the request
+	 */
 	public RequestParser(InputStream in)
 	{	
 		try {
+			//get the bytes available to read
 			byte[] bytes = new byte[in.available()];
+			//read them
 			in.read(bytes, 0, bytes.length);
+			//check if the first line is properly formatted
 			checkValidRequest(bytes);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
+		//Parse out the object path if it's a valid request
 		if(validRequest)
 		{
 			parseObjectPath();
@@ -62,11 +75,19 @@ public class RequestParser {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return whether request is valid
+	 */
 	public boolean GetValidRequest()
 	{
 		return validRequest;
 	}
 	
+	/**
+	 * 
+	 * @return the path to the object from the request
+	 */
 	public String GetObjectPath()
 	{	 
 		return objectPath;
